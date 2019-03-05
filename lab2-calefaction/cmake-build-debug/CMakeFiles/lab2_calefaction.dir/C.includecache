@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/c/Users/adipopa/Babes-Bolyai/Year1/object-oriented-programming/lab2-calefaction/main.c
+stdio.h
+-
+stdlib.h
+-
+math.h
+-
+
