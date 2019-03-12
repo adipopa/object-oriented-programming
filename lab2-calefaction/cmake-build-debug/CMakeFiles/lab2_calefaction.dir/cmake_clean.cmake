@@ -1,8 +1,9 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/lab2_calefaction.dir/main.c.o"
+  "CMakeFiles/lab2_calefaction.dir/main.c.obj"
   "lab2_calefaction.pdb"
   "lab2_calefaction.exe"
-  "liblab2_calefaction.dll.a"
+  "lab2_calefaction.exe.manifest"
+  "lab2_calefaction.lib"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -1,3 +1,3 @@
-/cygdrive/c/Users/adipopa/Babes-Bolyai/Year1/object-oriented-programming/lab2-calefaction/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/cygdrive/c/Users/adipopa/Babes-Bolyai/Year1/object-oriented-programming/lab2-calefaction/cmake-build-debug/CMakeFiles/lab2_calefaction.dir
-/cygdrive/c/Users/adipopa/Babes-Bolyai/Year1/object-oriented-programming/lab2-calefaction/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/adipopa/Babes-Bolyai/Year1/object-oriented-programming/lab2-calefaction/cmake-build-debug/CMakeFiles/lab2_calefaction.dir
+C:/Users/adipopa/Babes-Bolyai/Year1/object-oriented-programming/lab2-calefaction/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/adipopa/Babes-Bolyai/Year1/object-oriented-programming/lab2-calefaction/cmake-build-debug/CMakeFiles/rebuild_cache.dir

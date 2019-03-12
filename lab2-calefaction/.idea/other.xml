@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoUploadManager">
+    <option name="hosts">
+      <list>
+        <option value="92eb0937-3afa-48f2-ba8b-23a2cd62d7b1" />
+      </list>
+    </option>
+  </component>
+  <component name="ClangdSettings">
+    <option name="clangWarnings" value="-Wno-deprecated-declarations" />
+  </component>
+</project>

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <math.h>
 
 // Function for checking if a given number is prime.
@@ -21,14 +22,17 @@ int isPrime(int number) {
 
 // Function for reading the list of numbers from the console.
 void readListOfNumbers(int listOfNumbers[], int* listLength) {
-    char currentCharacter; // currentCharacter - the character next to the decimal number currently read.
+    char temporalString[10000]; // temporalString - a temporal string for keeping the user input from the console.
 
-    // Read the console input till the end of the current line (\n - new line was found).
-    printf("The list of numbers: ");
-    do {
-        scanf("%d%c", &listOfNumbers[*listLength], &currentCharacter);
+    // Keep reading until the end of the input stream.
+    printf("Enter the list of numbers: ");
+    scanf("%[^\n]s", temporalString);
+    char* currentToken = strtok(temporalString, " ");
+    while (currentToken != NULL) {
+        listOfNumbers[*listLength] = atoi(currentToken);
         *listLength += 1;
-    } while (currentCharacter != '\n');
+        currentToken = strtok(NULL, " ");
+    }
 }
 
 /* Function for finding the longest contiguous sub-sequence such that the difference of any
@@ -36,7 +40,7 @@ void readListOfNumbers(int listOfNumbers[], int* listLength) {
 void longestSequenceOfPrimePairs(int listOfNumbers[], int listLength, int* startIndex, int* maxLength) {
     int currentIndex = 0, currentLength = 0;
     int listIndex; // listIndex - index variable for iterating the 'listOfNumbers' array.
-    for (listIndex = 0; listIndex < listLength; listIndex++) {
+    for (listIndex = 0; listIndex < listLength - 1; listIndex++) {
         int difference = abs(listOfNumbers[listIndex + 1] - listOfNumbers[listIndex]);
         if (isPrime(difference)) {
             currentLength++;
@@ -50,6 +54,11 @@ void longestSequenceOfPrimePairs(int listOfNumbers[], int listLength, int* start
             }
             currentLength = 0;
         }
+    }
+
+    if (currentLength > *maxLength) {
+        *maxLength = currentLength;
+        *startIndex = currentIndex;
     }
 }
 

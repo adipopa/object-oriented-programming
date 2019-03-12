@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/cygdrive/c/Users/adipopa/Babes-Bolyai/Year1/object-oriented-programming/lab2-calefaction/main.c" "/cygdrive/c/Users/adipopa/Babes-Bolyai/Year1/object-oriented-programming/lab2-calefaction/cmake-build-debug/CMakeFiles/lab2_calefaction.dir/main.c.o"
+  "C:/Users/adipopa/Babes-Bolyai/Year1/object-oriented-programming/lab2-calefaction/main.c" "C:/Users/adipopa/Babes-Bolyai/Year1/object-oriented-programming/lab2-calefaction/cmake-build-debug/CMakeFiles/lab2_calefaction.dir/main.c.obj"
   )
-set(CMAKE_C_COMPILER_ID "GNU")
+set(CMAKE_C_COMPILER_ID "MSVC")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH

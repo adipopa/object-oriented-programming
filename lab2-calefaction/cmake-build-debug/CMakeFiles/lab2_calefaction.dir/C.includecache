@@ -6,11 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/c/Users/adipopa/Babes-Bolyai/Year1/object-oriented-programming/lab2-calefaction/main.c
+C:/Users/adipopa/Babes-Bolyai/Year1/object-oriented-programming/lab2-calefaction/main.c
 stdio.h
 -
 stdlib.h
 -
+string.h
+-
 math.h
+-
+crtdbg.h
 -
 
