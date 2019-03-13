@@ -1,5 +1,6 @@
 #include "SignalRepository.h"
 #include <stdlib.h>
+#include <string.h>
 
 SignalRepository SignalRepositoryConstructor() {
 	SignalRepository signalRepository;
@@ -33,6 +34,24 @@ void delete(SignalRepository* signalRepository, int signalId) {
 				signalRepository->signals[j] = signalRepository->signals[j + 1];
 			}
 			return;
+		}
+	}
+}
+
+void getAll(SignalRepository* signalRepository, char* formattedSignalsList) {
+	for (int i = 0; i < signalRepository->length; i++) {
+		char formattedSignal[32] = "";
+		signalToString(signalRepository->signals[i], formattedSignal);
+		strcat(formattedSignalsList, formattedSignal);
+	}
+}
+
+void getByType(SignalRepository* signalRepository, char type[], char* formattedSignalsList) {
+	for (int i = 0; i < signalRepository->length; i++) {
+		if (strcmp(signalRepository->signals[i].type, type) == 0) {
+			char formattedSignal[32] = "";
+			signalToString(signalRepository->signals[i], formattedSignal);
+			strcat(formattedSignalsList, formattedSignal);
 		}
 	}
 }

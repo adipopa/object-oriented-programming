@@ -1,2 +1,8 @@
-﻿  SignalController.c
+﻿  Console.c
+  SignalController.c
+  SignalRepository.c
+  Signal.c
+  Source.c
+  SignalValidator.c
+  Generating Code...
   lab3-first-encounters.vcxproj -> C:\Users\adipopa\Babes-Bolyai\Year1\object-oriented-programming\lab3-first-encounters\Debug\lab3-first-encounters.exe

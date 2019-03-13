@@ -12,4 +12,4 @@ typedef struct Signal {
 
 Signal SignalConstructor(int id, int modulatedSignal, char type[], int priorityNumber);
 
-int id(Signal signal);
+void signalToString(Signal signal, char* formattedSignal);
