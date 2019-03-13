@@ -1,5 +1,5 @@
 #include "SignalRepository.h"
-#include <string.h>
+#include <stdlib.h>
 
 SignalRepository SignalRepositoryConstructor() {
 	SignalRepository signalRepository;

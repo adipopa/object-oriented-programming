@@ -84,11 +84,11 @@ int uiDeleteSignal(Console* console, char* currentToken) {
 }
 
 int uiListSignals(Console* console, char* currentToken) {
-	char listToString[640];
+	char listToString[640] = "";
 	currentToken = strtok(NULL, " ");
 
 	if (currentToken == NULL) {
-		strcpy(listToString, retrieveSignals(console->signalController));
+		listSignals(console->signalController, listToString);
 	}
 	else {
 		char type[20];
@@ -97,7 +97,7 @@ int uiListSignals(Console* console, char* currentToken) {
 		if (currentToken != NULL) {
 			return -1;
 		}
-		strcpy(listToString, retrieveSignalsByType(console->signalController, type));
+		listSignalsByType(console->signalController, type, listToString);
 	}
 
 	printf("%s", listToString);

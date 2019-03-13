@@ -33,36 +33,34 @@ int deleteSignal(SignalController* signalController, int signalId) {
 	return 1;
 }
 
-const char* signalToString(Signal signal) {
-	char signalToString[32] = "";
-	sprintf(signalToString, "%d", signal.id);
-	strcat(signalToString, " ");
-	sprintf(signalToString + strlen(signalToString), "%d", signal.modulatedSignal);
-	strcat(signalToString, " ");
-	strcat(signalToString, signal.type);
-	strcat(signalToString, " ");
-	sprintf(signalToString + strlen(signalToString), "%d", signal.priorityNumber);
-	strcat(signalToString, "\n");
-	return signalToString;
+void signalToString(Signal signal, char* formattedSignal) {
+	sprintf(formattedSignal, "%d", signal.id);
+	strcat(formattedSignal, " ");
+	sprintf(formattedSignal + strlen(formattedSignal), "%d", signal.modulatedSignal);
+	strcat(formattedSignal, " ");
+	strcat(formattedSignal, signal.type);
+	strcat(formattedSignal, " ");
+	sprintf(formattedSignal + strlen(formattedSignal), "%d", signal.priorityNumber);
+	strcat(formattedSignal, "\n");
 }
 
-char* retrieveSignals(SignalController* signalController) {
-	char formattedSignalsList[640] = "";
+void listSignals(SignalController* signalController, char* formattedSignalsList) {
 	for (int i = 0; i < signalController->signalRepository->length; i++) {
 		Signal signal = signalController->signalRepository->signals[i];
-		strcat(formattedSignalsList, signalToString(signal));
+		char formattedSignal[32] = "";
+		signalToString(signal, formattedSignal);
+		strcat(formattedSignalsList, formattedSignal);
 	}
-	return formattedSignalsList;
 }
 
-char* retrieveSignalsByType(SignalController* signalController, char type[]) {
-	char formattedSignalsList[640] = "";
+void listSignalsByType(SignalController* signalController, char type[], char* formattedSignalsList) {
 	for (int i = 0; i < signalController->signalRepository->length; i++) {
 		Signal signal = signalController->signalRepository->signals[i];
 		if (strcmp(signal.type, type) == 0) {
-			strcat(formattedSignalsList, signalToString(signal));
+			char formattedSignal[32] = "";
+			signalToString(signal, formattedSignal);
+			strcat(formattedSignalsList, formattedSignal);
 		}
 	}
-	return formattedSignalsList;
 
 }

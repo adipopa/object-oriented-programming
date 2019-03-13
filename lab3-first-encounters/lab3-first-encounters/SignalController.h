@@ -18,6 +18,8 @@ int updateSignal(SignalController* signalController, int id, int newModulatedSig
 
 int deleteSignal(SignalController* signalController, int signalId);
 
-char* retrieveSignals(SignalController* signalController);
+void signalToString(Signal signal, char* formattedSignal);
 
-char* retrieveSignalsByType(SignalController* signalController, char type[]);
+void listSignals(SignalController* signalController, char* formattedSignalsList);
+
+void listSignalsByType(SignalController* signalController, char type[], char* formattedSignalsList);
