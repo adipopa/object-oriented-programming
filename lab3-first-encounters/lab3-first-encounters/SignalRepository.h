@@ -9,12 +9,14 @@ typedef struct SignalRepository {
 
 SignalRepository SignalRepositoryConstructor();
 
-void add(SignalRepository* signalRepository, Signal signal);
+void addToRepository(SignalRepository* signalRepository, Signal signal);
 
-void update(SignalRepository* signalRepository, Signal signal);
+void updateInRepository(SignalRepository* signalRepository, Signal signal);
 
-void delete(SignalRepository* signalRepository, int signalId);
+void deleteFromRepository(SignalRepository* signalRepository, int signalId);
 
 void getAll(SignalRepository* signalRepository, char* formattedSignalsList);
 
 void getByType(SignalRepository* signalRepository, char type[], char* formattedSignalsList);
+
+void SignalRepositoryDestructor(SignalRepository* signalRepository);

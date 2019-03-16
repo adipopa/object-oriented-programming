@@ -10,11 +10,11 @@ SignalRepository SignalRepositoryConstructor() {
 	return signalRepository;
 }
 
-void add(SignalRepository* signalRepository, Signal signal) {
+void addToRepository(SignalRepository* signalRepository, Signal signal) {
 	signalRepository->signals[signalRepository->length++] = signal;
 }
 
-void update(SignalRepository* signalRepository, Signal signal) {
+void updateInRepository(SignalRepository* signalRepository, Signal signal) {
 	int i;
 	for (i = 0; i < signalRepository->length; i++) {
 		if (signalRepository->signals[i].id == signal.id) {
@@ -24,7 +24,7 @@ void update(SignalRepository* signalRepository, Signal signal) {
 	}
 }
 
-void delete(SignalRepository* signalRepository, int signalId) {
+void deleteFromRepository(SignalRepository* signalRepository, int signalId) {
 	int i;
 	for (i = 0; i < signalRepository->length; i++) {
 		if (signalRepository->signals[i].id == signalId) {
@@ -54,4 +54,8 @@ void getByType(SignalRepository* signalRepository, char type[], char* formattedS
 			strcat(formattedSignalsList, formattedSignal);
 		}
 	}
+}
+
+void SignalRepositoryDestructor(SignalRepository* signalRepository) {
+	free(signalRepository->signals);
 }

@@ -4,12 +4,12 @@
 
 typedef struct Signal {
 	int id;
-	int modulatedSignal;
-	char type[20];
+	char modulatedSignal[16];
+	char type[16];
 	int priorityNumber;
 
 } Signal;
 
-Signal SignalConstructor(int id, int modulatedSignal, char type[], int priorityNumber);
+Signal SignalConstructor(int id, char modulatedSignal[], char type[], int priorityNumber);
 
 void signalToString(Signal signal, char* formattedSignal);

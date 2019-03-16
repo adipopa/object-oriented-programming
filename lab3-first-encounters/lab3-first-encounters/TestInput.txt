@@ -1,16 +1,16 @@
 list
-add 1, 17, damage-inner, 9
-add 2, 14, damage-outer, 8
-add 3, 15, damage-outer, 6
-add 4, 18, sensor-reading, 7
-add 5, 14, damage-inner, 8
-add 6, 15, damage-outer, 9
-add 5, 17, sensor-reading, 6
-add 7, 16, damage-inner, 8
+add 1, AM, damage-inner, 9
+add 2, FM, damage-outer, 8
+add 3, FM, damage-outer, 6
+add 4, AM, sensor-reading, 7
+add 5, QAM, damage-inner, 8
+add 6, SM, damage-outer, 9
+add 5, FM, sensor-reading, 6
+add 7, FM, damage-inner, 8
 list
 list damage-outer
 delete 5
 list
 delete 5
-update 3, 16, sensor-reading, 8
+update 3, AM, sensor-reading, 8
 list

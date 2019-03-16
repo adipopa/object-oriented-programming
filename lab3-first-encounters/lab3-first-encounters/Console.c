@@ -10,8 +10,8 @@ Console ConsoleConstructor(SignalController* signalController) {
 }
 
 int uiAddSignal(Console* console, char* currentToken) {
-	int id, modulatedSignal, priorityNumber;
-	char type[20];
+	int id, priorityNumber;
+	char modulatedSignal[16], type[16];
 	currentToken = strtok(NULL, " ");
 	if (currentToken == NULL) {
 		return -1;
@@ -21,7 +21,7 @@ int uiAddSignal(Console* console, char* currentToken) {
 	if (currentToken == NULL) {
 		return -1;
 	}
-	modulatedSignal = atoi(currentToken);
+	strcpy(modulatedSignal, currentToken);
 	currentToken = strtok(NULL, ", ");
 	if (currentToken == NULL) {
 		return -1;
@@ -40,8 +40,8 @@ int uiAddSignal(Console* console, char* currentToken) {
 }
 
 int uiUpdateSignal(Console* console, char* currentToken) {
-	int id, newModulatedSignal, newPriorityNumber;
-	char newType[20];
+	int id, newPriorityNumber;
+	char newModulatedSignal[16], newType[16];
 	currentToken = strtok(NULL, " ");
 	if (currentToken == NULL) {
 		return -1;
@@ -51,7 +51,7 @@ int uiUpdateSignal(Console* console, char* currentToken) {
 	if (currentToken == NULL) {
 		return -1;
 	}
-	newModulatedSignal = atoi(currentToken);
+	strcpy(newModulatedSignal, currentToken);
 	currentToken = strtok(NULL, ", ");
 	if (currentToken == NULL) {
 		return -1;

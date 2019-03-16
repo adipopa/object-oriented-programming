@@ -12,9 +12,9 @@ typedef struct SignalController {
 
 SignalController SignalControllerConstructor(SignalValidator* signalValidator, SignalRepository* signalRepository);
 
-int createSignal(SignalController* signalController, int id, int modulatedSignal, char type[], int priorityNumber);
+int createSignal(SignalController* signalController, int id, char modulatedSignal[], char type[], int priorityNumber);
 
-int updateSignal(SignalController* signalController, int id, int newModulatedSignal, char type[], int newPriorityNumber);
+int updateSignal(SignalController* signalController, int id, char newModulatedSignal[], char type[], int newPriorityNumber);
 
 int deleteSignal(SignalController* signalController, int signalId);
 
