@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\SignalModule">
+      <UniqueIdentifier>{9ce4a341-c6d3-46bd-97be-b2ace16bbc1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SignalModule">
+      <UniqueIdentifier>{8dc353b4-4a33-4adc-a062-ff368af4eb22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\HistoryModule">
+      <UniqueIdentifier>{747eeb11-5131-4a73-9469-82a9b802ebf4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\HistoryModule">
+      <UniqueIdentifier>{0d84d256-ff9a-4172-a2a9-2ee9b33e9ab8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Console.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Signal.c">
+      <Filter>Source Files\SignalModule</Filter>
+    </ClCompile>
+    <ClCompile Include="SignalController.c">
+      <Filter>Source Files\SignalModule</Filter>
+    </ClCompile>
+    <ClCompile Include="SignalRepository.c">
+      <Filter>Source Files\SignalModule</Filter>
+    </ClCompile>
+    <ClCompile Include="SignalValidator.c">
+      <Filter>Source Files\SignalModule</Filter>
+    </ClCompile>
+    <ClCompile Include="HistoryController.c">
+      <Filter>Source Files\HistoryModule</Filter>
+    </ClCompile>
+    <ClCompile Include="Operation.c">
+      <Filter>Source Files\HistoryModule</Filter>
+    </ClCompile>
+    <ClCompile Include="DynamicArray.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Console.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Signal.h">
+      <Filter>Header Files\SignalModule</Filter>
+    </ClInclude>
+    <ClInclude Include="SignalController.h">
+      <Filter>Header Files\SignalModule</Filter>
+    </ClInclude>
+    <ClInclude Include="SignalRepository.h">
+      <Filter>Header Files\SignalModule</Filter>
+    </ClInclude>
+    <ClInclude Include="SignalValidator.h">
+      <Filter>Header Files\SignalModule</Filter>
+    </ClInclude>
+    <ClInclude Include="HistoryController.h">
+      <Filter>Header Files\HistoryModule</Filter>
+    </ClInclude>
+    <ClInclude Include="Operation.h">
+      <Filter>Header Files\HistoryModule</Filter>
+    </ClInclude>
+    <ClInclude Include="DynamicArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="TestInput.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

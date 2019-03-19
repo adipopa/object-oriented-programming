@@ -1,0 +1,36 @@
+list
+add 1, AM, damage-inner, 9
+add 2, FM, damage-outer, 8
+add 3, FM, damage-outer, 6
+add 4, AM, sensor-reading, 7
+add 5, QAM, damage-inner, 8
+add 6, SM, damage-outer, 9
+add 5, FM, sensor-reading, 6
+add 7, FM, damage-inner, 8
+add 8, AM, damage-inner, 7
+add 9, FM, damage-outter, 8
+add 10, SM, damage-inner, 9
+list
+list damage-outer
+delete 5
+delete 6
+delete 7
+list
+delete 5
+update 2, AM, sensor-reading, 7
+update 3, SM, damage-inner, 8
+update 4, FM, damage-outer, 9
+list
+add 11, AM, damage-inner, 9
+add 12, FM, damage-outer, 8
+add 13, FM, damage-outer, 6
+list
+undo
+undo
+list
+add 12, SM, sensor-reading, 7
+list
+undo
+list
+redo
+list
