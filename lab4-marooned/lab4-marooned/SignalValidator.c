@@ -7,12 +7,8 @@ SignalValidator* SignalValidatorConstructor(SignalRepository* signalRepository) 
 }
 
 int validateAddSignal(SignalValidator* signalValidator, Signal* signal) {
-	for (int i = 0; i < signalValidator->signalRepository->signals->length; i++) {
-		if (((Signal*)signalValidator->signalRepository->signals->elements[i])->id == signal->id) {
-			return 0;
-		}
-	}
-	return 1;
+	int signalIndex = getElementIndex(signalValidator->signalRepository->signals, signalCompareFn, signal);
+	return signalIndex == -1;
 }
 
 int validateDeleteSignal(SignalValidator* signalValidator, Signal* signal) {

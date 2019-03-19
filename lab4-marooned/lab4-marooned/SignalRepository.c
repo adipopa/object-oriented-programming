@@ -11,39 +11,49 @@ void addToRepository(SignalRepository* signalRepository, Signal* signal) {
 }
 
 void updateInRepository(SignalRepository* signalRepository, Signal* signal) {
-	int signalIndex = getElementIndex(signalRepository->signals, signal, compareSignal);
+	int signalIndex = getElementIndex(signalRepository->signals, signalCompareFn, signal);
 	updateInArray(signalRepository->signals, signalIndex, signal);
 }
 
 void deleteFromRepository(SignalRepository* signalRepository, Signal* signal) {
-	int signalIndex = getElementIndex(signalRepository->signals, signal, compareSignal);
+	int signalIndex = getElementIndex(signalRepository->signals, signalCompareFn, signal);
 	deleteFromArray(signalRepository->signals, signalIndex);
 }
 
 Signal* getFromRepository(SignalRepository* signalRepository, int signalId) {
-	for (int i = 0; i < signalRepository->signals->length; i++) {
-		if (((Signal*)signalRepository->signals->elements[i])->id == signalId) {
-			return copySignal(signalRepository->signals->elements[i]);
-		}
-	}
-	return NULL;
+	Signal* signal = SignalConstructor(signalId, "", "", 0);
+	int signalIndex = getElementIndex(signalRepository->signals, signalCompareFn, signal);
+	SignalDestructor(signal);
+	return getFromArray(signalRepository->signals, signalIndex);
 }
 
-void getAll(SignalRepository* signalRepository, char* formattedSignalsList) {
-	for (int i = 0; i < signalRepository->signals->length; i++) {
+DynamicArray* getAll(SignalRepository* signalRepository) {
+	return copyArray(signalRepository->signals);
+}
+
+DynamicArray* getByModulatedSignal(SignalRepository* signalRepository, char* modulatedSignal) {
+	return filterArray(signalRepository->signals, signalModulatedSignalFilterFn, modulatedSignal);
+}
+
+DynamicArray* getByType(SignalRepository* signalRepository, char* type) {
+	return filterArray(signalRepository->signals, signalTypeFilterFn, type);
+}
+
+DynamicArray* getByPriorityNumberAsc(SignalRepository* signalRepository, int priorityNumber) {
+	DynamicArray* signalsByPriorityNumber = filterArray(signalRepository->signals, signalPriorityNumberFilterFn, &priorityNumber);
+	return sortArray(signalsByPriorityNumber, signalModulatedSignalAscSortFn);
+}
+
+DynamicArray* getByPriorityNumberDesc(SignalRepository* signalRepository, int priorityNumber) {
+	DynamicArray* signalsByPriorityNumber = filterArray(signalRepository->signals, signalPriorityNumberFilterFn, &priorityNumber);
+	return sortArray(signalsByPriorityNumber, signalModulatedSignalDescSortFn);
+}
+
+void signalsToString(DynamicArray* signals, char* formattedSignalsList) {
+	for (int i = 0; i < signals->length; i++) {
 		char formattedSignal[32] = "";
-		signalToString(((Signal*)signalRepository->signals->elements[i]), formattedSignal);
+		signalToString(((Signal*)signals->elements[i]), formattedSignal);
 		strcat(formattedSignalsList, formattedSignal);
-	}
-}
-
-void getByType(SignalRepository* signalRepository, char type[], char* formattedSignalsList) {
-	for (int i = 0; i < signalRepository->signals->length; i++) {
-		if (strcmp(((Signal*)signalRepository->signals->elements[i])->type, type) == 0) {
-			char formattedSignal[32] = "";
-			signalToString(((Signal*)signalRepository->signals->elements[i]), formattedSignal);
-			strcat(formattedSignalsList, formattedSignal);
-		}
 	}
 }
 

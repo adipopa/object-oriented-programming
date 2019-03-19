@@ -19,33 +19,33 @@ void createOperation(HistoryController* historyController, Operation* undoOperat
 }
 
 int undoOperation(HistoryController* historyController) {
-	if (canUndo(historyController)) {
-		Operation* operation = getUndoOperation(historyController);
-		historyController->operationIndex--;
-		operation->operationFn(operation->signalController, operation->signal);
-		OperationDestructor(operation);
-		return 1;
+	if (!canUndo(historyController)) {
+		return 0;
 	}
-	return 0;
+	Operation* operation = getUndoOperation(historyController);
+	historyController->operationIndex--;
+	operation->operationFn(operation->signalController, operation->signal);
+	OperationDestructor(operation);
+	return 1;
 }
 
 int redoOperation(HistoryController* historyController) {
-	if (canRedo(historyController)) {
-		historyController->operationIndex++;
-		Operation* operation = getRedoOperation(historyController);
-		operation->operationFn(operation->signalController, operation->signal);
-		OperationDestructor(operation);
-		return 1;
+	if (!canRedo(historyController)) {
+		return 0;
 	}
-	return 0;
+	historyController->operationIndex++;
+	Operation* operation = getRedoOperation(historyController);
+	operation->operationFn(operation->signalController, operation->signal);
+	OperationDestructor(operation);
+	return 1;
 }
 
 Operation* getUndoOperation(HistoryController* historyController) {
-	return copyOperation(historyController->undoOperations->elements[historyController->operationIndex]);
+	return getFromArray(historyController->undoOperations, historyController->operationIndex);
 }
 
 Operation* getRedoOperation(HistoryController* historyController) {
-	return copyOperation(historyController->redoOperations->elements[historyController->operationIndex]);
+	return getFromArray(historyController->redoOperations, historyController->operationIndex);
 }
 
 int canUndo(HistoryController* historyController) {

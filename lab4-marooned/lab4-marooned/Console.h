@@ -5,6 +5,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 #include <stdlib.h>
 #include <crtdbg.h>
 
@@ -25,6 +26,8 @@ int uiUpdateSignal(Console* console, char* currentToken);
 int uiDeleteSignal(Console* console, char* currentToken);
 
 int uiListSignals(Console* console, char* currentToken);
+
+int isStringNumber(char* stringToCheck);
 
 void runConsole(Console* console);
 

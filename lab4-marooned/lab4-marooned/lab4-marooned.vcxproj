@@ -124,6 +124,7 @@
     <ClCompile Include="SignalRepository.c" />
     <ClCompile Include="SignalValidator.c" />
     <ClCompile Include="Source.c" />
+    <ClCompile Include="Testing.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Console.h" />
@@ -134,9 +135,11 @@
     <ClInclude Include="SignalController.h" />
     <ClInclude Include="SignalRepository.h" />
     <ClInclude Include="SignalValidator.h" />
+    <ClInclude Include="Testing.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="TestInput.txt" />
+    <Text Include="TestsPassed.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

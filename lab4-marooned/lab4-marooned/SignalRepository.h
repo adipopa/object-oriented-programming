@@ -22,10 +22,18 @@ void updateInRepository(SignalRepository* signalRepository, Signal* signal);
 
 void deleteFromRepository(SignalRepository* signalRepository, Signal* signal);
 
-Signal* getFromRepository(SignalRepository* signalRepository, int index);
+Signal* getFromRepository(SignalRepository* signalRepository, int signalId);
 
-void getAll(SignalRepository* signalRepository, char* formattedSignalsList);
+DynamicArray* getAll(SignalRepository* signalRepository);
 
-void getByType(SignalRepository* signalRepository, char type[], char* formattedSignalsList);
+DynamicArray* getByModulatedSignal(SignalRepository* signalRepository, char* modulatedSignal);
+
+DynamicArray* getByType(SignalRepository* signalRepository, char* type);
+
+DynamicArray* getByPriorityNumberAsc(SignalRepository* signalRepository, int priorityNumber);
+
+DynamicArray* getByPriorityNumberDesc(SignalRepository* signalRepository, int priorityNumber);
+
+void signalsToString(DynamicArray* signals, char* formattedSignalsList);
 
 void SignalRepositoryDestructor(SignalRepository* signalRepository);

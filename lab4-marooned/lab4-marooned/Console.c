@@ -9,7 +9,7 @@ Console* ConsoleConstructor(SignalController* signalController, HistoryControlle
 
 int uiAddSignal(Console* console, char* currentToken) {
 	int id, priorityNumber;
-	char modulatedSignal[24], type[24];
+	char modulatedSignal[16], type[16];
 	currentToken = strtok(NULL, " ");
 	if (currentToken == NULL) {
 		return -1;
@@ -130,22 +130,74 @@ int uiListSignals(Console* console, char* currentToken) {
 	currentToken = strtok(NULL, " ");
 
 	if (currentToken == NULL) {
-		listSignals(console->signalController, listToString);
+		DynamicArray* allSignals = getSignals(console->signalController);
+		signalsToString(allSignals, listToString);
+		DynamicArrayDestructor(allSignals);
 	}
-	else if (strcmp(currentToken, "maximumPriorityNumber") == 0) {
-		printf("%s\n", currentToken);
-	}
-	else {
-		char type[20];
-		strcpy(type, currentToken);
+	else if (strcmp(currentToken, "modulatedSignal") == 0) {
+		char modulatedSignal[16];
+		currentToken = strtok(NULL, " ");
+		if (currentToken == NULL) {
+			return -1;
+		}
+		strcpy(modulatedSignal, currentToken);
 		currentToken = strtok(NULL, " ");
 		if (currentToken != NULL) {
 			return -1;
 		}
-		listSignalsByType(console->signalController, type, listToString);
+		DynamicArray* signalsByModulatedSignal = getSignalsByModulatedSignal(console->signalController, modulatedSignal);
+		signalsToString(signalsByModulatedSignal, listToString);
+		DynamicArrayDestructor(signalsByModulatedSignal);
+	}
+	else {
+		if (isStringNumber(currentToken)) {
+			int priorityNumber = atoi(currentToken);
+			char sortType[16] = "";
+			currentToken = strtok(NULL, " ");
+			if (currentToken != NULL) {
+				if (strcmp(currentToken, "asc") != 0 && strcmp(currentToken, "desc") != 0) {
+					return -1;
+				}
+				strcpy(sortType, currentToken);
+			}
+			currentToken = strtok(NULL, " ");
+			if (currentToken != NULL) {
+				return -1;
+			}
+			if (strcmp(sortType, "") == 0 || strcmp(sortType, "asc") == 0) {
+				DynamicArray* signalsByPriorityNumberAsc = getSignalsByPriorityNumberAsc(console->signalController, priorityNumber);
+				signalsToString(signalsByPriorityNumberAsc, listToString);
+				DynamicArrayDestructor(signalsByPriorityNumberAsc);
+			}
+			else if (strcmp(sortType, "desc") == 0) {
+				DynamicArray* signalsByPriorityNumberDesc = getSignalsByPriorityNumberDesc(console->signalController, priorityNumber);
+				signalsToString(signalsByPriorityNumberDesc, listToString);
+				DynamicArrayDestructor(signalsByPriorityNumberDesc);
+			}
+		}
+		else {
+			char type[16];
+			strcpy(type, currentToken);
+			currentToken = strtok(NULL, " ");
+			if (currentToken != NULL) {
+				return -1;
+			}
+			DynamicArray* signalsByType = getSignalsByType(console->signalController, type);
+			signalsToString(signalsByType, listToString);
+			DynamicArrayDestructor(signalsByType);
+		}
 	}
 
 	printf("%s", listToString);
+	return 1;
+}
+
+int isStringNumber(char* stringToCheck) {
+	for (int i = 0; i < stringToCheck[i] != '\0'; i++) {
+		if (!isdigit(stringToCheck[i])) {
+			return 0;
+		}
+	}
 	return 1;
 }
 
@@ -188,7 +240,7 @@ void runConsole(Console* console) {
 		else if (strcmp(command, "list") == 0) {
 			int listSignalsResult = uiListSignals(console, currentToken);
 			if (listSignalsResult == -1) {
-				printf("Invalid arguments for 'delete' command.\n");
+				printf("Invalid arguments for 'list' command.\n");
 			}
 		}
 		else if (strcmp(command, "undo") == 0) {

@@ -34,3 +34,6 @@ undo
 list
 redo
 list
+list 9
+list 9 desc
+list 9 asc

@@ -22,8 +22,28 @@ Signal* copySignal(Signal* signal) {
 	return signalCopy;
 }
 
-int compareSignal(Signal* signal1, Signal* signal2) {
+int signalCompareFn(Signal* signal1, Signal* signal2) {
 	return signal1->id == signal2->id;
+}
+
+int signalModulatedSignalFilterFn(Signal* signal, char* modulatedSignal) {
+	return strcmp(signal->modulatedSignal, modulatedSignal) == 0;
+}
+
+int signalTypeFilterFn(Signal* signal, char* type) {
+	return strcmp(signal->type, type) == 0;
+}
+
+int signalPriorityNumberFilterFn(Signal* signal, int* priorityNumber) {
+	return signal->priorityNumber < *priorityNumber;
+}
+
+int signalModulatedSignalAscSortFn(Signal* signal1, Signal* signal2) {
+	return strcmp(signal1->modulatedSignal, signal2->modulatedSignal) == -1;
+}
+
+int signalModulatedSignalDescSortFn(Signal* signal1, Signal* signal2) {
+	return strcmp(signal1->modulatedSignal, signal2->modulatedSignal) == 1;
 }
 
 void signalToString(Signal* signal, char* formattedSignal) {

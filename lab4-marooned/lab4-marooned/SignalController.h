@@ -24,8 +24,14 @@ int deleteSignal(SignalController* signalController, Signal* signal);
 
 Signal* getSignal(SignalController* signalController, int signalId);
 
-void listSignals(SignalController* signalController, char* formattedSignalsList);
+DynamicArray* getSignals(SignalController* signalController);
 
-void listSignalsByType(SignalController* signalController, char* type, char* formattedSignalsList);
+DynamicArray* getSignalsByModulatedSignal(SignalController* signalController, char* modulatedSignal);
+
+DynamicArray* getSignalsByType(SignalController* signalController, char* type);
+
+DynamicArray* getSignalsByPriorityNumberAsc(SignalController* signalController, int priorityNumber);
+
+DynamicArray* getSignalsByPriorityNumberDesc(SignalController* signalController, int priorityNumber);
 
 void SignalControllerDestructor(SignalController* signalController);

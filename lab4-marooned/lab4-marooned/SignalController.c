@@ -32,12 +32,24 @@ Signal* getSignal(SignalController* signalController, int signalId) {
 	return getFromRepository(signalController->signalRepository, signalId);
 }
 
-void listSignals(SignalController* signalController, char* formattedSignalsList) {
-	getAll(signalController->signalRepository, formattedSignalsList);
+DynamicArray* getSignals(SignalController* signalController) {
+	return getAll(signalController->signalRepository);
 }
 
-void listSignalsByType(SignalController* signalController, char* type, char* formattedSignalsList) {
-	getByType(signalController->signalRepository, type, formattedSignalsList);
+DynamicArray* getSignalsByModulatedSignal(SignalController* signalController, char* modulatedSignal) {
+	return getByModulatedSignal(signalController->signalRepository, modulatedSignal);
+}
+
+DynamicArray* getSignalsByType(SignalController* signalController, char* type) {
+	return getByType(signalController->signalRepository, type);
+}
+
+DynamicArray* getSignalsByPriorityNumberAsc(SignalController* signalController, int priorityNumber) {
+	return getByPriorityNumberAsc(signalController->signalRepository, priorityNumber);
+}
+
+DynamicArray* getSignalsByPriorityNumberDesc(SignalController* signalController, int priorityNumber) {
+	return getByPriorityNumberDesc(signalController->signalRepository, priorityNumber);
 }
 
 void SignalControllerDestructor(SignalController* signalController) {

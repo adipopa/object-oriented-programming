@@ -19,7 +19,17 @@ Signal* SignalConstructor(int id, char* modulatedSignal, char* type, int priorit
 
 Signal* copySignal(Signal* signal);
 
-int compareSignal(Signal* signal1, Signal* signal2);
+int signalCompareFn(Signal* signal1, Signal* signal2);
+
+int signalModulatedSignalFilterFn(Signal* signal, char* modulatedSignal);
+
+int signalTypeFilterFn(Signal* signal, char* type);
+
+int signalPriorityNumberFilterFn(Signal* signal, int* priorityNumber);
+
+int signalModulatedSignalAscSortFn(Signal* signal1, Signal* signal2);
+
+int signalModulatedSignalDescSortFn(Signal* signal1, Signal* signal2);
 
 void signalToString(Signal* signal, char* formattedSignal);
 

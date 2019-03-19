@@ -1,5 +1,3 @@
-#include <stdlib.h>
-
 #include "DynamicArray.h"
 
 DynamicArray* DynamicArrayConstructor(CopyFunction copyFn, DestroyFunction destroyFn) {
@@ -38,13 +36,20 @@ void deleteFromArray(DynamicArray* array, int index) {
 	}
 }
 
-int getElementIndex(DynamicArray* array, TElem element, CompareFunction compareFn) {
+int getElementIndex(DynamicArray* array, CompareFunction compareFn, TElem element) {
 	for (int i = 0; i < array->length; i++) {
 		if (compareFn(array->elements[i], element)) {
 			return i;
 		}
 	}
 	return -1;
+}
+
+TElem getFromArray(DynamicArray* array, int index) {
+	if (index > -1 && index < array->length) {
+		return array->copyFn(array->elements[index]);
+	}
+	return NULL;
 }
 
 void deleteAllFromIndex(DynamicArray* array, int startIndex) {
@@ -61,6 +66,29 @@ void resizeArray(DynamicArray* array) {
 	}
 	free(array->elements);
 	array->elements = newElements;
+}
+
+DynamicArray* filterArray(DynamicArray* array, FilterFunction filterFn, void* valueToCompare) {
+	DynamicArray* filteredArray = copyArray(array);
+	for (int i = array->length - 1; i >= 0; i--) {
+		if (!filterFn(array->elements[i], valueToCompare)) {
+			deleteFromArray(filteredArray, i);
+		}
+	}
+	return filteredArray;
+}
+
+DynamicArray* sortArray(DynamicArray* array, SortFunction sortFn) {
+	for (int i = 0; i < array->length; i++) {
+		for (int j = 0; j < array->length; j++) {
+			if (sortFn(array->elements[i], array->elements[j])) {
+				TElem* tempElement = array->elements[i];
+				array->elements[i] = array->elements[j];
+				array->elements[j] = tempElement;
+			}
+		}
+	}
+	return array;
 }
 
 DynamicArray* copyArray(DynamicArray* array) {
