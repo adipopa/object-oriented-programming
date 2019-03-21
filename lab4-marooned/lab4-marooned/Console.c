@@ -1,9 +1,12 @@
 #include "Console.h"
 
-Console* ConsoleConstructor(SignalController* signalController, HistoryController* historyController) {
+Console* ConsoleConstructor(SignalController* signalController) {
 	Console* console = (Console*)malloc(sizeof(Console));
 	console->signalController = signalController;
-	console->historyController = historyController;
+	console->historyController = HistoryControllerConstructor();
+	console->historyListController = HistoryListControllerConstructor(signalController);
+	// Magic variable for specifying which controller should be used for the undo / redo functionality (operations / list).
+	console->historyType = "operations";
 	return console;
 }
 
@@ -39,11 +42,13 @@ int uiAddSignal(Console* console, char* currentToken) {
 	int createSignalResult = createSignal(console->signalController, signal);
 
 	if (createSignalResult == 1) {
-		Operation* undoOperation = OperationConstructor(deleteSignal, console->signalController, signal);
-		Operation* redoOperation = OperationConstructor(createSignal, console->signalController, signal);
-		createOperation(console->historyController, undoOperation, redoOperation);
-		OperationDestructor(undoOperation);
-		OperationDestructor(redoOperation);
+		if (strcmp(console->historyType, "operations") == 0) {
+			uiCreateOperation(console, deleteSignal, signal, createSignal, signal);
+		}
+		else if (strcmp(console->historyType, "list") == 0) {
+			uiAppendUndoList(console);
+		}
+		
 	}
 
 	SignalDestructor(signal);
@@ -84,11 +89,12 @@ int uiUpdateSignal(Console* console, char* currentToken) {
 	int updateSignalResult = updateSignal(console->signalController, newSignal);
 
 	if (updateSignalResult == 1) {
-		Operation* undoOperation = OperationConstructor(updateSignal, console->signalController, oldSignal);
-		Operation* redoOperation = OperationConstructor(updateSignal, console->signalController, newSignal);
-		createOperation(console->historyController, undoOperation, redoOperation);
-		OperationDestructor(undoOperation);
-		OperationDestructor(redoOperation);
+		if (strcmp(console->historyType, "operations") == 0) {
+			uiCreateOperation(console, updateSignal, oldSignal, updateSignal, newSignal);
+		}
+		else if (strcmp(console->historyType, "list") == 0) {
+			uiAppendUndoList(console);
+		}
 	}
 
 	SignalDestructor(oldSignal);
@@ -113,16 +119,31 @@ int uiDeleteSignal(Console* console, char* currentToken) {
 	int deleteSignalResult = deleteSignal(console->signalController, signal);
 
 	if (deleteSignalResult == 1) {
-		Operation* undoOperation = OperationConstructor(createSignal, console->signalController, signal);
-		Operation* redoOperation = OperationConstructor(deleteSignal, console->signalController, signal);
-		createOperation(console->historyController, undoOperation, redoOperation);
-		OperationDestructor(undoOperation);
-		OperationDestructor(redoOperation);
+		if (strcmp(console->historyType, "operations") == 0) {
+			uiCreateOperation(console, createSignal, signal, deleteSignal, signal);
+		}
+		else if (strcmp(console->historyType, "list") == 0) {
+			uiAppendUndoList(console);
+		}
 	}
 
 	SignalDestructor(signal);
 
 	return deleteSignalResult;
+}
+
+void uiCreateOperation(Console* console, OperationFunction undoFn, Signal* signalToUndo, OperationFunction redoFn, Signal* signalToRedo) {
+	Operation* undoOperation = OperationConstructor(undoFn, console->signalController, signalToUndo);
+	Operation* redoOperation = OperationConstructor(redoFn, console->signalController, signalToRedo);
+	createOperation(console->historyController, undoOperation, redoOperation);
+	OperationDestructor(undoOperation);
+	OperationDestructor(redoOperation);
+}
+
+void uiAppendUndoList(Console* console) {
+	DynamicArray* itemsToUndo = getSignals(console->signalController);
+	appendUndoList(console->historyListController, itemsToUndo);
+	DynamicArrayDestructor(itemsToUndo);
 }
 
 int uiListSignals(Console* console, char* currentToken) {
@@ -244,15 +265,33 @@ void runConsole(Console* console) {
 			}
 		}
 		else if (strcmp(command, "undo") == 0) {
-			int undoOperationResult = undoOperation(console->historyController);
-			if (undoOperationResult == 0) {
+			int undoResult = -1;
+			if (strcmp(console->historyType, "operations") == 0) {
+				undoResult = undoOperation(console->historyController);
+			}
+			else if (strcmp(console->historyType, "list") == 0) {
+				undoResult = undoItems(console->historyListController);
+			}
+			if (undoResult == -1) {
+				printf("No controller was specified for the undo operation.\n");
+			}
+			else if (undoResult == 0) {
 				printf("There is no action left to undo.\n");
 			}
 		}
 		else if (strcmp(command, "redo") == 0) {
-			int redoOperationResult = redoOperation(console->historyController);
-			if (redoOperationResult == 0) {
-				printf("There is no action to redo.\n");
+			int redoResult = -1;
+			if (strcmp(console->historyType, "operations") == 0) {
+				redoResult = redoOperation(console->historyController);
+			}
+			else if (strcmp(console->historyType, "list") == 0) {
+				redoResult = redoItems(console->historyListController);
+			}
+			if (redoResult == -1) {
+				printf("No controller was specified for the redo operation.\n");
+			}
+			else if (redoResult == 0) {
+				printf("There is no action left to redo.\n");
 			}
 		}
 		else if (strcmp(command, "exit") == 0) {
@@ -268,6 +307,7 @@ void ConsoleDestructor(Console* console) {
 	if (console != NULL) {
 		SignalControllerDestructor(console->signalController);
 		HistoryControllerDestructor(console->historyController);
+		HistoryListControllerDestructor(console->historyListController);
 		free(console);
 	}
 }

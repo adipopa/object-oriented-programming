@@ -118,6 +118,7 @@
     <ClCompile Include="Console.c" />
     <ClCompile Include="DynamicArray.c" />
     <ClCompile Include="HistoryController.c" />
+    <ClCompile Include="HistoryListController.c" />
     <ClCompile Include="Operation.c" />
     <ClCompile Include="Signal.c" />
     <ClCompile Include="SignalController.c" />
@@ -130,6 +131,7 @@
     <ClInclude Include="Console.h" />
     <ClInclude Include="DynamicArray.h" />
     <ClInclude Include="HistoryController.h" />
+    <ClInclude Include="HistoryListController.h" />
     <ClInclude Include="Operation.h" />
     <ClInclude Include="Signal.h" />
     <ClInclude Include="SignalController.h" />

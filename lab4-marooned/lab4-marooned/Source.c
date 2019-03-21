@@ -13,8 +13,7 @@ int main() {
 	SignalRepository* signalRepository = SignalRepositoryConstructor();
 	SignalValidator* signalValidator = SignalValidatorConstructor(signalRepository);
 	SignalController* signalController = SignalControllerConstructor(signalValidator, signalRepository);
-	HistoryController* historyController = HistoryControllerConstructor();
-	Console* console = ConsoleConstructor(signalController, historyController);
+	Console* console = ConsoleConstructor(signalController);
 	runConsole(console);
 
 	// Calling the ConsoleDestructor in order to free up all the memory that was allocated during runtime.

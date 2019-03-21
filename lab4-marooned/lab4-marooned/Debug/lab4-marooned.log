@@ -1,4 +1,13 @@
-﻿  Source.c
+﻿  Console.c
+  DynamicArray.c
+  HistoryController.c
+  HistoryListController.c
+  Operation.c
+  Signal.c
+  SignalController.c
+  SignalRepository.c
+  SignalValidator.c
+  Source.c
   Testing.c
   Generating Code...
   lab4-marooned.vcxproj -> C:\Users\adipopa\Babes-Bolyai\Year1\object-oriented-programming\lab4-marooned\Debug\lab4-marooned.exe

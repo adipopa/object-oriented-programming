@@ -4,8 +4,9 @@
 #define _CRTDBG_MAP_ALLOC
 
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+#include <stdlib.h>
+#include <crtdbg.h>
 
 typedef struct Signal {
 	int id;

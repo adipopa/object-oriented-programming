@@ -23,9 +23,9 @@ int undoOperation(HistoryController* historyController) {
 		return 0;
 	}
 	Operation* operation = getUndoOperation(historyController);
-	historyController->operationIndex--;
 	operation->operationFn(operation->signalController, operation->signal);
 	OperationDestructor(operation);
+	historyController->operationIndex--;
 	return 1;
 }
 

@@ -57,6 +57,9 @@
     <ClCompile Include="Testing.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HistoryListController.c">
+      <Filter>Source Files\HistoryModule</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Console.h">
@@ -85,6 +88,9 @@
     </ClInclude>
     <ClInclude Include="Testing.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HistoryListController.h">
+      <Filter>Header Files\HistoryModule</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
