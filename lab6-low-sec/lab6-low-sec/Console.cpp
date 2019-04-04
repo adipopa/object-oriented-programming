@@ -130,7 +130,7 @@ void Console::uiListRecordings(string inputString) {
 		position = inputString.find(" ");
 		if (position != string::npos) { throw runtime_error("Invalid arguments for 'list' command."); }
 
-		recordings = this->recordingController->getRecordingsByLocation(location, timesAccessed);
+		recordings = this->recordingController->getRecordingsByLocationAndTimesAccessed(location, timesAccessed);
 	}
 
 	for (int i = 0; i < recordings.getSize(); i++) {
@@ -176,7 +176,7 @@ void Console::uiSeeWatchlist(string inputString) {
 }
 
 void Console::runConsole() {
-	cout << "Argo Motherboard 3.07 ship\n\n";
+	cout << "Argo Motherboard 3.14 ship\n\n";
 	cout << "Please use the command 'mode A/B' to select your clearance level (high-security/low-security).\n";
 	int keepAlive = 1;
 	while (keepAlive) {

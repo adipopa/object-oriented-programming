@@ -17,11 +17,17 @@ private:
 public:
 	Testing() : recordingRepository(RecordingRepository{}), recordingValidator(&this->recordingRepository),
 		recordingController(&this->recordingValidator, &this->recordingRepository, "high-security") {};
+	void testSetMode();
 
 	void testCreateRecording();
 	void testUpdateRecording();
 	void testDeleteRecording();
 	void testGetRecordings();
+
+	void testGetNextRecording();
+	void testSaveRecording();
+	void testgetRecordingsByLocationAndTimesAccessed();
+	void testGetWatchlist();
 
 	void printTestsPassed();
 

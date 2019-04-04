@@ -29,7 +29,7 @@ public:
 
 	void addToWatchlist(const std::string& title);
 
-	DynamicVector<Recording> getRecordingsByLocation(const std::string& location, const int timesAccessed);
+	DynamicVector<Recording> getRecordingsByLocationAndTimesAccessed(const std::string& location, const int timesAccessed);
 
-	DynamicVector<Recording> getWatchlist() const;
+	DynamicVector<Recording> getWatchlist();
 };

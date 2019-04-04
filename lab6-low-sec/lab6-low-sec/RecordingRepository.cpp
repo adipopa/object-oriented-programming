@@ -25,7 +25,7 @@ DynamicVector<Recording> RecordingRepository::getRecordings() const {
 	return this->recordings;
 }
 
-DynamicVector<Recording> RecordingRepository::getRecordingsByLocation(const std::string& location, const int timesAccessed) {
+DynamicVector<Recording> RecordingRepository::getRecordingsByLocationAndTimesAccessed(const std::string& location, const int timesAccessed) {
 	DynamicVector<Recording> filteredRecordings = DynamicVector<Recording>{ this->recordings };
 	auto recordingFilterFunction = [location, timesAccessed](const Recording& recording) -> bool {
 		return recording.getLocation().find(location) != std::string::npos && recording.getTimesAccessed() < timesAccessed;
@@ -52,6 +52,6 @@ void RecordingRepository::addToWatchlist(const std::string& title) {
 	this->watchlist.add(recording);
 }
 
-DynamicVector<Recording> RecordingRepository::getWatchlist() const {
+DynamicVector<Recording> RecordingRepository::getWatchlist() {
 	return this->watchlist;
 }

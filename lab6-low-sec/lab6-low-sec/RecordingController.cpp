@@ -70,14 +70,14 @@ void RecordingController::saveRecording(const std::string& title) {
 	this->recordingRepository->addToWatchlist(title);
 }
 
-DynamicVector<Recording> RecordingController::getRecordingsByLocation(const std::string & location, const int timesAccessed) {
+DynamicVector<Recording> RecordingController::getRecordingsByLocationAndTimesAccessed(const std::string & location, const int timesAccessed) {
 	if (this->clearanceLevel.compare("low-security") != 0) {
 		throw std::runtime_error("You don't have the necessary clearance to list the recordings by location and times accessed.");
 	}
-	return this->recordingRepository->getRecordingsByLocation(location, timesAccessed);
+	return this->recordingRepository->getRecordingsByLocationAndTimesAccessed(location, timesAccessed);
 }
 
-DynamicVector<Recording> RecordingController::getWatchlist() const {
+DynamicVector<Recording> RecordingController::getWatchlist() {
 	if (this->clearanceLevel.compare("low-security") != 0) {
 		throw std::runtime_error("You don't have the necessary clearance to see your watchlist.");
 	}
