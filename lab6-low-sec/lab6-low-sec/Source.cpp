@@ -3,7 +3,7 @@
 
 int main() {
 	Testing testing{};
-	testing.runTests();
+	// testing.runTests();
 
 	RecordingRepository recordingRepository{};
 	RecordingValidator recordingValidator{ &recordingRepository };
