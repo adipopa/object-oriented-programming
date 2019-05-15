@@ -1,0 +1,3 @@
+Date: 2019.05.09, BMI: 23.400000 - OK
+Date: 2019.05.12, BMI: 17.900000 - Not OK
+Date: 2019.05.23, Systolic value: 101, diastolic value: 75 - OK

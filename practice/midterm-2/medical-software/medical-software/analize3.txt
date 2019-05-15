@@ -1,0 +1,2 @@
+Date: 2019.05.23, Systolic value: 101, diastolic value: 75 - OK
+Date: 2019.06.03, Systolic value: 104, diastolic value: 81 - Not OK
