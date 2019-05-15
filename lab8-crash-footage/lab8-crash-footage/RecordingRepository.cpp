@@ -74,7 +74,6 @@ std::vector<Recording> RecordingRepository::getWatchlist() {
 
 void RecordingRepository::setFileLocation(const std::string& fileLocation) {
 	this->fileLocation = fileLocation;
-	this->loadFileData();
 }
 
 void RecordingRepository::loadFileData() {
@@ -90,6 +89,8 @@ void RecordingRepository::loadFileData() {
 	while (inputStream >> recording) {
 		this->recordings.push_back(recording);
 	}
+
+	inputStream.close();
 }
 
 void RecordingRepository::saveDataToFile() {
@@ -102,4 +103,6 @@ void RecordingRepository::saveDataToFile() {
 	for (auto const& recording : this->recordings) {
 		outputStream << recording;
 	}
+
+	outputStream.close();
 }

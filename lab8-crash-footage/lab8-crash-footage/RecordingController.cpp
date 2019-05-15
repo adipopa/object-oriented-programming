@@ -83,8 +83,5 @@ std::vector<Recording> RecordingController::getWatchlist() {
 }
 
 void RecordingController::setFileLocation(const std::string & fileLocation) {
-	if (this->clearanceLevel.compare("high-security") != 0) {
-		throw std::runtime_error("You don't have the necessary clearance to set the file location.");
-	}
 	this->recordingRepository->setFileLocation(fileLocation);
 }

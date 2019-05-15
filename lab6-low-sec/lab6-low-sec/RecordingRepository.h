@@ -23,6 +23,8 @@ public:
 
 	void deleteFromRepository(const std::string& title);
 
+	void initializeIterator();
+
 	DynamicVector<Recording> getRecordings() const;
 
 	Recording getNextRecording();

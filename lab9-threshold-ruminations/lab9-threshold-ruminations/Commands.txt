@@ -1,0 +1,11 @@
+fileLocation C:\Users\adipopa\Babes-Bolyai\Year1\object-oriented-programming\lab9-threshold-ruminations\lab9-threshold-ruminations\TestInput.txt
+next
+next
+save anomaly 1
+save anomaly 2
+mylist
+mylistLocation C:\Users\adipopa\Babes-Bolyai\Year1\object-oriented-programming\lab9-threshold-ruminations\lab9-threshold-ruminations\watchlist.html
+next
+save anomaly 3
+mylist
+openMylist

@@ -59,14 +59,6 @@ void Testing::testSetMode() {
 		assert(std::string(exception.what()).compare("You don't have the necessary clearance to see your watchlist.") == 0);
 	}
 
-	this->recordingController->setMode('B');
-
-	try {
-		this->recordingController->setFileLocation(".\\TestInput.txt");
-	} catch (std::exception& exception) {
-		assert(std::string(exception.what()).compare("You don't have the necessary clearance to set the file location.") == 0);
-	}
-
 	try {
 		this->recordingController->setMode('C');
 	} catch (std::exception& exception) {

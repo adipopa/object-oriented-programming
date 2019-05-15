@@ -1,9 +1,2 @@
-﻿  Console.cpp
-  Recording.cpp
-  RecordingController.cpp
-  RecordingRepository.cpp
-  RecordingValidator.cpp
-  Source.cpp
-  Testing.cpp
-  Generating Code...
+﻿  Source.cpp
   lab8-crash-footage.vcxproj -> C:\Users\adipopa\Babes-Bolyai\Year1\object-oriented-programming\lab8-crash-footage\Debug\lab8-crash-footage.exe

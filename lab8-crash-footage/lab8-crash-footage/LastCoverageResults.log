@@ -1,4 +1,4 @@
-[2019-04-18 14:14:40] [info] Start Program:
+[2019-04-19 10:21:03] [info] Start Program:
 Path:"C:\Users\adipopa\Babes-Bolyai\Year1\object-oriented-programming\lab8-crash-footage\Debug\lab8-crash-footage.exe"
 Arguments:
 Working directory: "C:\Users\adipopa\Babes-Bolyai\Year1\object-oriented-programming\lab8-crash-footage\lab8-crash-footage\"
@@ -9,13 +9,13 @@ Cover Children: 0
 Aggregate by file: 1
 Continue after C++ exception: 0
 Optimized build support: 0
-Export: Binary C:\Users\adipopa\AppData\Local\Temp\mpcq1sxl.s00 
+Export: Binary C:\Users\adipopa\AppData\Local\Temp\23rvh4ry.id3 
 Input coverage: 
 Unified diff: 
 Excluded line regular expressions: 
 Substitute pdb source paths: 
 
-[2019-04-18 14:14:40] [info] Module: C:\Users\adipopa\Babes-Bolyai\Year1\object-oriented-programming\lab8-crash-footage\Debug\lab8-crash-footage.exe is selected because it matches selected pattern: C:\Users\adipopa\Babes-Bolyai\Year1\object-oriented-programming\lab8-crash-footage\Debug\lab8-crash-footage.exe
-[2019-04-18 14:14:40] [info] ----------------------------------------------------
-[2019-04-18 14:14:40] [info] Coverage binary generated in file: C:\Users\adipopa\AppData\Local\Temp\mpcq1sxl.s00
-[2019-04-18 14:14:40] [info] ----------------------------------------------------
+[2019-04-19 10:21:03] [info] Module: C:\Users\adipopa\Babes-Bolyai\Year1\object-oriented-programming\lab8-crash-footage\Debug\lab8-crash-footage.exe is selected because it matches selected pattern: C:\Users\adipopa\Babes-Bolyai\Year1\object-oriented-programming\lab8-crash-footage\Debug\lab8-crash-footage.exe
+[2019-04-19 10:21:04] [info] ----------------------------------------------------
+[2019-04-19 10:21:04] [info] Coverage binary generated in file: C:\Users\adipopa\AppData\Local\Temp\23rvh4ry.id3
+[2019-04-19 10:21:04] [info] ----------------------------------------------------

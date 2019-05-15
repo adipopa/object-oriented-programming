@@ -7,6 +7,7 @@ void RecordingController::setMode(const char mode) {
 	}
 	if (mode == 'B') {
 		this->clearanceLevel = "low-security";
+		this->recordingRepository->initializeIterator();
 		return;
 	}
 	throw std::runtime_error("Invalid mode type (valid options are A/B).");

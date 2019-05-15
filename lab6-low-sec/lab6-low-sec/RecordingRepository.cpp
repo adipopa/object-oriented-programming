@@ -21,6 +21,10 @@ void RecordingRepository::deleteFromRepository(const std::string& title) {
 	this->recordings.remove(recordingIndex);
 }
 
+void RecordingRepository::initializeIterator() {
+	this->recordingsIterator = this->recordings.begin();
+}
+
 DynamicVector<Recording> RecordingRepository::getRecordings() const {
 	return this->recordings;
 }
@@ -35,11 +39,11 @@ DynamicVector<Recording> RecordingRepository::getRecordingsByLocationAndTimesAcc
 }
 
 Recording RecordingRepository::getNextRecording() {
-	Recording nextRecording = *this->recordingsIterator;
-	this->recordingsIterator++;
 	if (this->recordingsIterator == this->recordings.end()) {
 		this->recordingsIterator = this->recordings.begin();
 	}
+	Recording nextRecording = *this->recordingsIterator;
+	this->recordingsIterator++;
 	return nextRecording;
 }
 

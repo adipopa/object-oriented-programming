@@ -184,7 +184,7 @@ void Console::uiSetFileLocation(std::string inputString) {
 	string currentToken = inputString.substr(0, inputString.size());
 	string fileLocation = currentToken;
 
-	position = inputString.find(", ");
+	position = inputString.find("\n");
 	if (position != string::npos) { throw runtime_error("Invalid arguments for 'fileLocation' command."); }
 
 	this->recordingController->setFileLocation(fileLocation);
