@@ -5,7 +5,7 @@
 Console::Console(const shared_ptr<RecordingController>& recordingController) : recordingController{ recordingController } {}
 
 void Console::runConsole() {
-	cout << "Argo Motherboard 3.14 ship\n\n";
+	cout << "Argo Motherboard v3.14\n\n";
 	cout << "Please use the command 'mode A/B' to select your clearance level (high-security/low-security).\n";
 	int keepAlive = 1;
 	while (keepAlive) {

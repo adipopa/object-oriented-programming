@@ -1,0 +1,9 @@
+anomaly 1, deck F sector X1343, 01-13-6448, 3, prev1.2.mp15
+anomaly 2, deck C sector X1622, 01-13-3238, 7, prev2.2.mp15
+anomaly 3, deck T sector X4225, 01-13-5343, 8, prev3.2.mp15
+anomaly 4, deck L sector X3442, 01-13-3238, 2, prev4.2.mp15
+anomaly 5, deck K sector X6312, 01-13-2314, 9, prev5.2.mp15
+anomaly 6, deck J sector X4165, 01-13-4215, 4, prev6.2.mp15
+anomaly 7, deck N sector X2112, 01-13-1234, 3, prev7.2.mp15
+anomaly 8, deck D sector X1423, 01-13-3248, 5, prev8.mp15
+anomaly 9, deck E sector X1542, 01-13-3538, 8, prev9.mp15
